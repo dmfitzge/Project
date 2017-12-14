@@ -1,0 +1,22 @@
+//1.
+/usr/local/hbase/bin/start-hbase.sh
+
+//2.
+/usr/local/hbase/bin/hbase shell
+
+//3.	
+create 'flightsView', 'colfam1'
+
+//4.
+//(From a new terminal window run sqoop to sqoop the data from mysql table to HBASE table)
+
+/usr/local/sqoop/bin/sqoop import --connect jdbc:mysql://127.0.0.1/flightsDB --username root --password Hadoop2015 --table "flightsView" --columns "id,AIRLINE,ORIGIN_AIRPORT,DEPARTURE_DELAY,ARRIVAL_DELAY" --hbase-table "flightsView" --column-family "colfam1" --hbase-row-key id -m 1
+
+//5.
+// Create a mapreduce project in Eclipse
+// Add Driver, Mapper & Reducer files	(HBaseSummarisation Task2)
+// Create HBASE tables for the outputs
+// Save the outputs to the HBASE tables	(HBaseSummarisation Task2)
+// Write the results from HBASE to HDFS (HBaseSummarisation Task1)
+// Export to Excel and Visualise
+
